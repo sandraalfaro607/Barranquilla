@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tendencias Entretenimiento Barranquilla 2025 | Análisis Ejecutivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-blue: #0A2540;
+            --accent-blue: #0073E6;
+            --light-blue: #F0F5FA;
+            --text-dark: #1A1A1A;
+            --text-muted: #555555;
+            --white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #F8FAFC;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER Y NAVEGACIÓN */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: #A0AEC0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-blue);
+        }
+
+        .nav-btn.active {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: var(--white);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+            min-height: 70vh;
+        }
+
+        /* INTERFACES (TAB CONTENTS) */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HERO BANNER */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1E3A8A 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            color: #CBD5E1;
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        /* INTERFAZ 1: TENDENCIAS (GRID) */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .nav-btn {
+                flex: 1;
+                justify-content: center;
+                padding: 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-number {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--accent-blue);
+            font-weight: 700;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-size: 0.98rem;
+        }
+
+        .item-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .item-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .item-list li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            top: 2px;
+        }
+
+        .item-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        /* INTERFAZ 2: ANÁLISIS ESTRATÉGICO */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .metric-box {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--accent-blue);
+            box-shadow: var(--shadow);
+        }
+
+        .metric-box h4 {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-box .number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin: 0.5rem 0;
+        }
+
+        .table-container {
+            background: var(--white);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        tr:nth-child(even) {
+            background-color: #F8FAFC;
+        }
+
+        /* INTERFAZ 3: FAQ Y CONTACTO */
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-icon {
+            background: var(--light-blue);
+            color: var(--accent-blue);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1DA851;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-alcaldia {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        .btn-alcaldia:hover {
+            background-color: #001529;
+            box-shadow: 0 4px 12px rgba(10, 37, 64, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 3px solid var(--accent-blue);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <i class="fa-solid fa-chart-line fa-xl" style="color: var(--accent-blue);"></i>
+            <div>
+                <div class="brand-title">CONSULTORÍA ESTRATÉGICA</div>
+                <div class="brand-subtitle">Mercados & Entretenimiento 2025</div>
+            </div>
+        </div>
+        <nav>
+            <button class="nav-btn active" onclick="switchTab('tab1', this)">
+                <i class="fa-solid fa-compass"></i> Tendencias
+            </button>
+            <button class="nav-btn" onclick="switchTab('tab2', this)">
+                <i class="fa-solid fa-chart-pie"></i> Análisis Oportunidades
+            </button>
+            <button class="nav-btn" onclick="switchTab('tab3', this)">
+                <i class="fa-solid fa-circle-question"></i> FAQ & Contacto
+            </button>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <div id="tab1" class="tab-content active">
+            <div class="hero">
+                <h1>Tendencias de Consumo de Entretenimiento</h1>
+                <p>Análisis ejecutivo sobre el comportamiento del mercado y los servicios de entretenimiento en Barranquilla durante el 2025.</p>
+            </div>
+
+            <div class="grid-cards">
+                <div class="card">
+                    <span class="card-number">TENDENCIA 01</span>
+                    <h2 class="card-title">Desestacionalización de la "Economía Naranja"</h2>
+                    <p class="card-desc">Tradicionalmente, el consumo de entretenimiento en Barranquilla estaba fuertemente concentrado en el primer trimestre (pre-carnaval y Carnaval). En 2025, la tendencia se volcó hacia un consumo continuo a lo largo del año.</p>
+                    <ul class="item-list">
+                        <li><span class="item-title">Eventos de nicho:</span> Hubo un aumento en festivales gastronómicos, ferias de emprendimiento de diseño local y conciertos de mediano formato en recintos como Puerta de Oro.</li>
+                        <li><span class="item-title">Monetización cultural:</span> Los consumidores mostraron mayor disposición a pagar por experiencias culturales inmersivas y eventos privados que rescatan la identidad caribeña pero con estándares de producción internacionales.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">TENDENCIA 02</span>
+                    <h2 class="card-title">El auge del "Eatertainment" (Gastronomía + Experiencia)</h2>
+                    <p class="card-desc">Salir a comer dejó de ser una transacción para convertirse en el núcleo del entretenimiento de fin de semana.</p>
+                    <ul class="item-list">
+                        <li><span class="item-title">Conceptos híbridos:</span> Los restaurantes y bares, especialmente en zonas como el norte de la ciudad y Barrio El Prado, integraron música en vivo (no solo vallenato o champeta, sino jazz, electrónica y fusiones), mixología de autor y diseño de interiores pensado para la viralidad en redes sociales.</li>
+                        <li><span class="item-title">Ticket promedio:</span> El consumidor barranquillero de clase media-alta destinó una porción mayor de su ingreso disponible a este rubro, priorizando la "experiencia compartida" sobre el simple consumo de alimentos.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">TENDENCIA 03</span>
+                    <h2 class="card-title">Espacios Públicos como Anclas de Consumo</h2>
+                    <p class="card-desc">El Gran Malecón del Río y la recuperación de parques impulsaron un modelo de entretenimiento mixto.</p>
+                    <ul class="item-list">
+                        <li><span class="item-title">Consumo periférico:</span> Aunque el acceso a estos espacios es gratuito, catalizaron un ecosistema de consumo alrededor: food trucks de alta gama, alquiler de equipos recreativos (patinetas, bicicletas) y micro-eventos patrocinados por marcas.</li>
+                        <li><span class="item-title">Entretenimiento familiar y Pet Friendly:</span> Los servicios orientados al disfrute familiar que incluyen áreas seguras para mascotas y niños mostraron la mayor tasa de retención de clientes.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="card-number">TENDENCIA 04</span>
+                    <h2 class="card-title">Digitalización y el "Fandom" Deportivo/Gamer</h2>
+                    <p class="card-desc">El entretenimiento digital y deportivo tuvo un comportamiento híbrido muy marcado.</p>
+                    <ul class="item-list">
+                        <li><span class="item-title">Junior de Barranquilla como plataforma:</span> Más allá del estadio, el consumo se trasladó a plataformas digitales, apuestas deportivas (sportsbooks) y eventos de visualización en bares, que ahora funcionan con dinámicas de membresía o consumo mínimo garantizado.</li>
+                        <li><span class="item-title">Comunidades eSports:</span> El consumo de videojuegos y transmisiones en Twitch/YouTube creció fuertemente entre los segmentos más jóvenes (Generación Z y Alpha), impulsando la creación de arenas gaming locales y torneos patrocinados por empresas de telecomunicaciones regionales.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="hero" style="background: linear-gradient(135deg, #0073E6 0%, #0A2540 100%);">
+                <h1>Matriz de Impacto y Oportunidades 2025</h1>
+                <p>Estrategia corporativa basada en el comportamiento del consumidor para la toma de decisiones financieras y comerciales en Barranquilla.</p>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <h4>Crecimiento Anual</h4>
+                    <div class="number">+18.4%</div>
+                    <p style="font-size:0.85rem; color: var(--text-muted);">Gasto en experiencias gastronómicas e híbridas.</p>
+                </div>
+                <div class="metric-box">
+                    <h4>Retención de Clientes</h4>
+                    <div class="number">84%</div>
+                    <p style="font-size:0.85rem; color: var(--text-muted);">En establecimientos adaptados a Pet Friendly / Familiar.</p>
+                </div>
+                <div class="metric-box">
+                    <h4>Canal Digital</h4>
+                    <div class="number">62%</div>
+                    <p style="font-size:0.85rem; color: var(--text-muted);">De reservas en eventos vía plataformas o chat directo.</p>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sector</th>
+                            <th>Oportunidad Estratégica</th>
+                            <th>Nivel de Riesgo</th>
+                            <th>Perfil de Consumidor Target</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Gastronomía (Eatertainment)</strong></td>
+                            <td>Creación de conceptos temáticos multisensoriales con agenda cultural rotativa.</td>
+                            <td><span style="color: #25D366; font-weight: 700;">Bajo</span></td>
+                            <td>Clase media-alta / Profesionales y Familias</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Eventos Inmersivos</strong></td>
+                            <td>Festivales privados fuera de la temporada de Carnaval (Q2 y Q3).</td>
+                            <td><span style="color: #E67E22; font-weight: 700;">Medio</span></td>
+                            <td>Jóvenes adultos / Turistas nacionales</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Entretenimiento Digital & eSports</strong></td>
+                            <td>Arenas de competencia y alianzas comerciales con sportsbooks locales.</td>
+                            <td><span style="color: #E67E22; font-weight: 700;">Medio</span></td>
+                            <td>Generación Z y Gen Alpha</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Espacios Públicos / Comercio</strong></td>
+                            <td>Activaciones temporales (Pop-ups) y modelos de conveniencia en Gran Malecón.</td>
+                            <td><span style="color: #25D366; font-weight: 700;">Bajo</span></td>
+                            <td>Público General / Familias / Pet Owners</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tab3" class="tab-content">
+            <div class="hero" style="background: linear-gradient(135deg, #1A1A1A 0%, #0A2540 100%);">
+                <h1>Centro de Respuesta & Contacto</h1>
+                <p>Resuelva sus dudas frecuentes acerca del informe y conéctese directamente con nuestra línea ejecutiva o portales institucionales.</p>
+            </div>
+
+            <div class="faq-section">
+                <h2 style="color: var(--primary-blue); margin-bottom: 1.5rem;">Preguntas Frecuentes</h2>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-icon">?</div>
+                        <span>¿Cómo impacta la desestacionalización a los pequeños negocios?</span>
+                    </div>
+                    <p style="color: var(--text-muted); margin-left: 40px;">Permite un flujo de caja regular durante todo el año, reduciendo la dependencia crítica de las ventas generadas únicamente en la temporada de Carnaval.</p>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-icon">?</div>
+                        <span>¿Por qué el concepto "Eatertainment" es clave en Barranquilla?</span>
+                    </div>
+                    <p style="color: var(--text-muted); margin-left: 40px;">El consumidor barranquillero valora altamente la socialización exterior. Al combinar alta cocina con experiencias musicales o de contenido visual, se incrementa el ticket promedio y el tiempo de permanencia.</p>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-icon">?</div>
+                        <span>¿Dónde se recopilaron las tendencias de espacios públicos?</span>
+                    </div>
+                    <p style="color: var(--text-muted); margin-left: 40px;">Se basa en el seguimiento del tráfico comercial y eventos realizados en nodos estratégicos como el Gran Malecón del Río y la red de parques renovados de la ciudad.</p>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <h2 style="color: var(--primary-blue); margin-bottom: 0.5rem;">¿Desea profundizar en este análisis?</h2>
+                <p style="color: var(--text-muted);">Póngase en contacto directo para asesorías ejecutivas o revise los programas institucionales de la ciudad.</p>
+
+                <div class="contact-buttons">
+                    <a href="https://wa.me/573022812033" target="_blank" class="btn btn-whatsapp">
+                        <i class="fa-brands fa-whatsapp fa-lg"></i> Contactar por WhatsApp
+                    </a>
+
+                    <a href="https://www.barranquilla.gov.co/" target="_blank" class="btn btn-alcaldia">
+                        <i class="fa-solid fa-building-columns"></i> Alcaldía de Barranquilla
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 - Análisis Estratégico de Consumo y Entretenimiento. Marca Personal & Consultoría Corporativa.</p>
+    </footer>
+
+    <script>
+        function switchTab(tabId, element) {
+            // Ocultar todos los contenidos
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Quitar clase active de los botones
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Mostrar la pestaña seleccionada
+            document.getElementById(tabId).classList.add('active');
+
+            // Activar el botón presionado
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
