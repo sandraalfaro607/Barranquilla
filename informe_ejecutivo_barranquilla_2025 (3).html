@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-[#FAF7F2]">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Consumo de Entretenimiento Barranquilla 2025 - Comité Nacional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        earth: {
+                            50: '#FAF7F2',
+                            100: '#F4EFE6',
+                            200: '#E7DBCB',
+                            300: '#D5C2AA',
+                            400: '#B89B77',
+                            500: '#A3805B',
+                            600: '#876343',
+                            700: '#6E4E35',
+                            800: '#4D3625',
+                            900: '#2C1E15',
+                            950: '#1A120C',
+                        },
+                        terracotta: {
+                            50: '#FDF6F0',
+                            100: '#FBEADE',
+                            400: '#E08A63',
+                            500: '#C85A32',
+                            600: '#B84922',
+                            700: '#943617',
+                        },
+                        ochre: {
+                            400: '#E5A93C',
+                            500: '#D98E1D',
+                            600: '#B87212',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #2C1E15;
+            background-color: #FAF7F2;
+            overflow-x: hidden;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .earth-card {
+            background: #ffffff;
+            border: 1px solid #E7DBCB;
+            box-shadow: 0 10px 30px -5px rgba(44, 30, 21, 0.05);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .earth-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 35px -10px rgba(44, 30, 21, 0.12);
+        }
+        .glass-panel {
+            background: rgba(250, 247, 242, 0.88);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid #E7DBCB;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F4EFE6;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #B89B77;
+            border-radius: 4px;
+        }
+        
+        /* Keyframe Animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .animate-float {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+        .animate-pulse-glow {
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+        .animate-fadeInUp {
+            animation: fadeInSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .img-zoom-container {
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .img-zoom-container img {
+            transition: transform 0.6s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.08);
+        }
+
+        .badge-live {
+            background: linear-gradient(90deg, #C85A32, #D98E1D);
+            background-size: 200% 200%;
+            animation: shimmer 3s infinite linear;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col antialiased custom-scrollbar">
+
+    <!-- Header Principal / Navegación -->
+    <header class="sticky top-0 z-50 glass-panel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Marca & Título -->
+                <div class="flex items-center space-x-3 group cursor-pointer" onclick="switchTab('informe')">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-terracotta-600 to-ochre-500 flex items-center justify-center text-white font-extrabold text-xl shadow-lg transform group-hover:scale-105 transition-transform">
+                        B
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[10px] font-bold tracking-widest text-terracotta-600 uppercase">Comité Nacional 2025</span>
+                            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        </div>
+                        <h1 class="text-lg font-extrabold text-earth-900 leading-none">Barranquilla Entertainment Report</h1>
+                    </div>
+                </div>
+
+                <!-- Tabs de Navegación (3 Interfaces) -->
+                <nav class="hidden md:flex space-x-2 bg-earth-100/90 p-1.5 rounded-2xl border border-earth-200/80 shadow-inner">
+                    <button onclick="switchTab('informe')" id="tab-btn-informe" class="nav-tab px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 bg-earth-900 text-white shadow-md">
+                        📊 1. Informe & Tendencias
+                    </button>
+                    <button onclick="switchTab('oportunidades')" id="tab-btn-oportunidades" class="nav-tab px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 text-earth-700 hover:text-earth-900 hover:bg-earth-200/60">
+                        💡 2. Oportunidades & ROI
+                    </button>
+                    <button onclick="switchTab('contacto')" id="tab-btn-contacto" class="nav-tab px-5 py-2.5 rounded-xl font-semibold text-sm transition-all duration-300 text-earth-700 hover:text-earth-900 hover:bg-earth-200/60">
+                        📞 3. Contacto & Enlaces Directos
+                    </button>
+                </nav>
+
+                <!-- Acceso Rápido Móvil Menu Button -->
+                <div class="md:hidden">
+                    <select onchange="switchTab(this.value)" class="bg-earth-100 text-earth-900 font-semibold text-xs rounded-xl px-3 py-2 border border-earth-300 focus:outline-none shadow-sm">
+                        <option value="informe">1. Informe & Tendencias</option>
+                        <option value="oportunidades">2. Oportunidades & ROI</option>
+                        <option value="contacto">3. Contacto & Enlaces Directos</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- INTERFAZ 1: INFORME EJECUTIVO Y TENDENCIAS -->
+        <section id="interface-informe" class="tab-content space-y-8 animate-fadeInUp">
+            
+            <!-- Banner Introductorio con Imagen de Barranquilla (Gran Malecón del Río) -->
+            <div class="relative overflow-hidden rounded-3xl bg-earth-950 text-white shadow-2xl group border border-earth-800">
+                <!-- Imagen de fondo real de Barranquilla (Gran Malecón / Río Magdalena) -->
+                <div class="absolute inset-0 z-0 opacity-40 group-hover:opacity-50 transition-opacity duration-700">
+                    <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=1600&q=80" 
+                         alt="Gran Malecón del Río Barranquilla" 
+                         class="w-full h-full object-cover object-center transform scale-100 group-hover:scale-105 transition-transform duration-1000"
+                         onerror="this.onerror=null; this.src='https://placehold.co/1600x600/2C1E15/FAF7F2?text=Gran+Malec%C3%B3n+del+R%C3%ADo+Barranquilla';">
+                    <div class="absolute inset-0 bg-gradient-to-r from-earth-950 via-earth-950/90 to-transparent"></div>
+                </div>
+
+                <!-- Elementos decorativos en movimiento -->
+                <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-terracotta-500/20 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+                <div class="absolute left-1/2 top-0 w-60 h-60 bg-ochre-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="relative z-10 p-8 sm:p-12 max-w-3xl space-y-4">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-terracotta-500/30 text-terracotta-100 border border-terracotta-400/30 backdrop-blur-md">
+                        <span class="w-2 h-2 rounded-full bg-ochre-400 animate-ping"></span>
+                        <span>Documento Oficial de Inteligencia de Mercado • Barranquilla 2025</span>
+                    </div>
+
+                    <h2 class="text-3xl sm:text-5xl font-serif-title font-bold leading-tight text-earth-50">
+                        El Boom del Entretenimiento en Barranquilla
+                    </h2>
+
+                    <p class="text-earth-100 text-sm sm:text-base leading-relaxed bg-earth-900/60 p-5 rounded-2xl border border-white/10 backdrop-blur-md shadow-lg">
+                        "El dato más contundente que debes llevar a la junta es que <strong class="text-ochre-400 font-bold">el consumo de entretenimiento no es bajo; está en un pico histórico y es altamente rentable.</strong> A nivel nacional, los colombianos gastaron más en recreación y cultura que en salud. El reto no es la falta de demanda, sino estructurar productos atractivos para un público altamente planificador."
+                    </p>
+
+                    <!-- Etiqueta de locación emblemática -->
+                    <div class="pt-2 flex items-center space-x-2 text-xs text-earth-300 font-medium">
+                        <span class="text-terracotta-400">📍 Hub Cultural & Recreativo:</span>
+                        <span class="bg-earth-900/80 px-2.5 py-1 rounded-lg border border-earth-700">Gran Malecón del Río & Puerta de Oro</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Métricas Clave Grid con Animación y Micro-Interacciones -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                
+                <div class="earth-card p-6 rounded-2xl border-l-4 border-l-terracotta-500 relative overflow-hidden group">
+                    <div class="absolute right-2 top-2 text-terracotta-500/10 text-5xl font-extrabold group-hover:scale-110 transition-transform">📈</div>
+                    <span class="text-xs font-bold text-earth-500 uppercase tracking-wider block">Crecimiento Sectorial</span>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-earth-900 my-1 flex items-baseline">
+                        <span class="counter-value" data-target="9.9">+9.9</span><span class="text-terracotta-600 text-2xl">%</span>
+                    </div>
+                    <p class="text-xs text-earth-600 leading-snug">PIB de Arte y Entretenimiento 2025 (Líder nacional superando al comercio).</p>
+                </div>
+
+                <div class="earth-card p-6 rounded-2xl border-l-4 border-l-ochre-500 relative overflow-hidden group">
+                    <div class="absolute right-2 top-2 text-ochre-500/10 text-5xl font-extrabold group-hover:scale-110 transition-transform">🎟️</div>
+                    <span class="text-xs font-bold text-earth-500 uppercase tracking-wider block">Ventas Regionales</span>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-earth-900 my-1 flex items-baseline">
+                        <span class="counter-value" data-target="35">+35</span><span class="text-ochre-600 text-2xl">%</span>
+                    </div>
+                    <p class="text-xs text-earth-600 leading-snug">Aumento en boletería fuera de Bogotá/Medellín (45% del total nacional).</p>
+                </div>
+
+                <div class="earth-card p-6 rounded-2xl border-l-4 border-l-earth-700 relative overflow-hidden group">
+                    <div class="absolute right-2 top-2 text-earth-700/10 text-5xl font-extrabold group-hover:scale-110 transition-transform">📊</div>
+                    <span class="text-xs font-bold text-earth-500 uppercase tracking-wider block">Confianza Consumidor</span>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-earth-900 my-1 flex items-baseline">
+                        <span class="counter-value" data-target="42">+42</span><span class="text-earth-700 text-2xl">Pts</span>
+                    </div>
+                    <p class="text-xs text-earth-600 leading-snug">Disposición al gasto en bienes durables y ocio en Barranquilla.</p>
+                </div>
+
+                <div class="earth-card p-6 rounded-2xl border-l-4 border-l-terracotta-700 relative overflow-hidden group">
+                    <div class="absolute right-2 top-2 text-terracotta-700/10 text-5xl font-extrabold group-hover:scale-110 transition-transform">📅</div>
+                    <span class="text-xs font-bold text-earth-500 uppercase tracking-wider block">Planificación Previa</span>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-earth-900 my-1 flex items-baseline">
+                        <span class="counter-value" data-target="75">75</span><span class="text-terracotta-700 text-2xl">%</span>
+                    </div>
+                    <p class="text-xs text-earth-600 leading-snug">Del público compra sus entradas con más de 1 mes de anticipación.</p>
+                </div>
+
+            </div>
+
+            <!-- Galería Visual de Escenarios Emblemáticos de Barranquilla -->
+            <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="text-xs font-bold text-terracotta-600 uppercase tracking-widest">Escenarios Estratégicos</span>
+                        <h3 class="text-xl font-bold text-earth-900">Infraestructura y Recintos Clave en Barranquilla</h3>
+                    </div>
+                    <span class="text-xs bg-earth-200 text-earth-800 font-semibold px-3 py-1 rounded-full hidden sm:inline-block">Capacidad e Impacto 2025</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Tarjeta Sitio 1: Gran Malecón -->
+                    <div class="earth-card rounded-2xl overflow-hidden flex flex-col group">
+                        <div class="relative h-48 img-zoom-container">
+                            <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Gran Malecón del Río" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x500/2C1E15/FAF7F2?text=Gran+Malec%C3%B3n+del+R%C3%ADo';">
+                            <div class="absolute top-3 left-3 bg-earth-950/80 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                                🌊 Malecón del Río
+                            </div>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-2">
+                            <h4 class="font-bold text-earth-900 text-base">Festivales de Espacio Abierto & Gastronomía</h4>
+                            <p class="text-xs text-earth-600 leading-relaxed">
+                                El sitio más visitado de Colombia. Epicentro perfecto para eventos masivos de un solo día, ferias gastronómicas y activación de marcas B2B.
+                            </p>
+                            <div class="pt-2 flex justify-between items-center text-[11px] text-terracotta-700 font-semibold border-t border-earth-100">
+                                <span>Afluencia: Récord Continuo</span>
+                                <span class="bg-terracotta-50 px-2 py-0.5 rounded">Perfil: Familiar & Ocio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Sitio 2: Puerta de Oro -->
+                    <div class="earth-card rounded-2xl overflow-hidden flex flex-col group">
+                        <div class="relative h-48 img-zoom-container">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Puerta de Oro Centro de Eventos" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x500/2C1E15/FAF7F2?text=Puerta+de+Oro+Centro+de+Eventos';">
+                            <div class="absolute top-3 left-3 bg-earth-950/80 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                                🏢 Puerta de Oro
+                            </div>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-2">
+                            <h4 class="font-bold text-earth-900 text-base">Conciertos y Shows de Gran Formato</h4>
+                            <p class="text-xs text-earth-600 leading-relaxed">
+                                Recinto techado multipropósito ideal para megaconciertos, shows de comedia de gran aforo y congresos con alta venta de entradas en preventa.
+                            </p>
+                            <div class="pt-2 flex justify-between items-center text-[11px] text-ochre-700 font-semibold border-t border-earth-100">
+                                <span>Aforo Controlado: Elevado</span>
+                                <span class="bg-ochre-50 px-2 py-0.5 rounded">Perfil: Premium & Shows</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta Sitio 3: Ventana al Mundo / Plaza -->
+                    <div class="earth-card rounded-2xl overflow-hidden flex flex-col group sm:col-span-2 lg:col-span-1">
+                        <div class="relative h-48 img-zoom-container">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Ventana al Mundo & Plaza Cultural" 
+                                 class="w-full h-full object-cover"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/800x500/2C1E15/FAF7F2?text=Plazas+y+Monumentos+Barranquilla';">
+                            <div class="absolute top-3 left-3 bg-earth-950/80 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                                🌆 Íconos Urbanos
+                            </div>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between space-y-2">
+                            <h4 class="font-bold text-earth-900 text-base">Experiencias Pop-up & Activaciones</h4>
+                            <p class="text-xs text-earth-600 leading-relaxed">
+                                La arquitectura moderna y los íconos de la ciudad impulsan el turismo cultural, facilitando la creación de experiencias inmersivas fotogénicas.
+                            </p>
+                            <div class="pt-2 flex justify-between items-center text-[11px] text-earth-800 font-semibold border-t border-earth-100">
+                                <span>Viralidad Social: Extrema</span>
+                                <span class="bg-earth-100 px-2 py-0.5 rounded">Perfil: Jóvenes & Familias</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Desglose de los 4 Pilares Strategic Points + Gráficos -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-4">
+                
+                <!-- Columna Izquierda: Los 4 Pilares -->
+                <div class="lg:col-span-7 space-y-5">
+                    
+                    <h3 class="text-xl font-bold text-earth-900 border-b border-earth-200 pb-2">
+                        Argumentario de Mercado para el Comité
+                    </h3>
+
+                    <!-- Pilar 1 -->
+                    <div class="earth-card p-6 rounded-2xl border-l-4 border-l-terracotta-500">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-terracotta-100 text-terracotta-700 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">
+                                1
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-earth-900 mb-1">El mito del "bajo consumo" está roto</h4>
+                                <p class="text-earth-700 text-xs sm:text-sm leading-relaxed mb-2">
+                                    El sector de arte y entretenimiento fue el motor económico en 2025, creciendo un <strong>9,9%</strong> (superando al comercio).
+                                </p>
+                                <p class="text-earth-700 text-xs sm:text-sm leading-relaxed">
+                                    La disposición a gastar en ocio en Barranquilla se disparó <strong>42 puntos</strong>. El público barranquillero tiene el capital y la intención de compra.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 2 -->
+                    <div class="earth-card p-6 rounded-2xl border-l-4 border-l-ochre-500">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-ochre-400/20 text-ochre-600 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">
+                                2
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-earth-900 mb-1">Barranquilla ya no es una plaza secundaria</h4>
+                                <p class="text-earth-700 text-xs sm:text-sm leading-relaxed">
+                                    La venta de boletería en regiones creció un <strong>35%</strong>, representando casi la mitad (45%) del mercado nacional. Barranquilla está lista para captar grandes espectáculos y rentabilizarlos rápidamente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 3 -->
+                    <div class="earth-card p-6 rounded-2xl border-l-4 border-l-earth-700">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-earth-200 text-earth-800 flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">
+                                3
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-earth-900 mb-1">El consumidor cambió: Menos impulso, más planificación</h4>
+                                <p class="text-earth-700 text-xs sm:text-sm leading-relaxed mb-3">
+                                    El <strong>75%</strong> del público ahora compra con más de un mes de anticipación. Quien abre preventas tempranas asegura la caja.
+                                </p>
+                                <div class="bg-terracotta-50 p-3 rounded-xl border border-terracotta-100 flex items-center justify-between text-xs text-terracotta-700 font-semibold">
+                                    <span>Eventos con Sold Out Total en 2025:</span>
+                                    <span class="bg-terracotta-500 text-white px-2.5 py-1 rounded-lg font-bold">50% de los shows</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pilar 4 -->
+                    <div class="earth-card p-6 rounded-2xl border-l-4 border-l-earth-900">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-xl bg-earth-800 text-white flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-sm">
+                                4
+                            </div>
+                            <div>
+                                <h4 class="text-base font-bold text-earth-900 mb-1">Formatos de alta rentabilidad</h4>
+                                <p class="text-earth-700 text-xs sm:text-sm leading-relaxed">
+                                    Los festivales de 1 solo día y los shows de <strong>comedia en vivo</strong> son los productos estrella. La comedia destaca por su baja complejidad logística y rápido retorno.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Columna Derecha: Gráfico de Comportamiento -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="earth-card p-6 rounded-2xl h-full flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-base font-bold text-earth-900">Radiografía del Mercado 2025</h3>
+                                <span class="text-xs bg-earth-100 text-earth-700 font-semibold px-2 py-1 rounded-md">Porcentajes %</span>
+                            </div>
+                            <p class="text-xs text-earth-600 mb-6">Comparativa de indicadores económicos y tendencias de consumo en Barranquilla.</p>
+                            
+                            <div class="relative w-full h-72 sm:h-80">
+                                <canvas id="chartExecutive"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Conclusión Recomendada Box -->
+                        <div class="mt-6 p-4 rounded-xl bg-earth-950 text-earth-100 border border-earth-800 shadow-inner space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs font-bold text-ochre-400 uppercase tracking-widest">📌 Conclusión Estratégica</span>
+                            </div>
+                            <p class="text-xs italic leading-relaxed text-earth-200">
+                                "Señores del comité, los datos demuestran que Barranquilla no sufre de bajo consumo, sino que demanda una oferta bien planificada..."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- INTERFAZ 2: OPORTUNIDADES & SIMULADOR ROI -->
+        <section id="interface-oportunidades" class="tab-content hidden space-y-8 animate-fadeInUp">
+            
+            <div class="border-b border-earth-200 pb-5 flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="text-xs font-bold text-terracotta-600 uppercase tracking-widest">Análisis Táctico de Negocio</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif-title font-bold text-earth-900">
+                        Oportunidades de Inversión y Simulador Financiero
+                    </h2>
+                    <p class="text-earth-600 text-sm mt-1">
+                        Evaluación de formatos altamente rentables y proyección dinámica del Retorno de Inversión (ROI) para el comité.
+                    </p>
+                </div>
+                <div class="bg-earth-100 p-3 rounded-xl border border-earth-200 text-xs text-earth-800 font-semibold">
+                    📍 Plaza de Inversión: Barranquilla, Atlántico
+                </div>
+            </div>
+
+            <!-- Matriz de Formatos Recomendados -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Formato 1 -->
+                <div class="earth-card p-6 rounded-2xl flex flex-col justify-between hover:border-terracotta-400 transition-colors group">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-terracotta-100 text-terracotta-700">
+                                Alta Demanda
+                            </span>
+                            <span class="text-2xl group-hover:scale-125 transition-transform">🎤</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-earth-900 mb-2">Comedia en Vivo (Stand-Up)</h3>
+                        <p class="text-xs text-earth-600 leading-relaxed mb-4">
+                            Logística liviana, costos de producción reducidos y tasa de agotamiento de entradas récord en 2025.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-earth-700 space-y-2 border-t border-earth-100 pt-4">
+                        <li class="flex justify-between"><span>Margen Promedio:</span> <strong class="text-terracotta-600">45% - 60%</strong></li>
+                        <li class="flex justify-between"><span>Riesgo Operativo:</span> <strong class="text-earth-800">Bajo</strong></li>
+                        <li class="flex justify-between"><span>Velocidad Venta:</span> <strong class="text-earth-800">&lt; 15 días</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Formato 2 -->
+                <div class="earth-card p-6 rounded-2xl flex flex-col justify-between hover:border-ochre-400 transition-colors group">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-ochre-400/20 text-ochre-600">
+                                Volumen & Escala
+                            </span>
+                            <span class="text-2xl group-hover:scale-125 transition-transform">🎪</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-earth-900 mb-2">Festivales de 1 Solo Día</h3>
+                        <p class="text-xs text-earth-600 leading-relaxed mb-4">
+                            Formatos de Reguetón o Música Electrónica en el Malecón o Puerta de Oro. Optimizan costos y multiplican patrocinios.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-earth-700 space-y-2 border-t border-earth-100 pt-4">
+                        <li class="flex justify-between"><span>Margen Promedio:</span> <strong class="text-ochre-600">30% - 40%</strong></li>
+                        <li class="flex justify-between"><span>Riesgo Operativo:</span> <strong class="text-earth-800">Medio</strong></li>
+                        <li class="flex justify-between"><span>Captación B2B:</span> <strong class="text-earth-800">Muy Alta</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Formato 3 -->
+                <div class="earth-card p-6 rounded-2xl flex flex-col justify-between hover:border-earth-600 transition-colors group">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-earth-200 text-earth-800">
+                                Experiencias Premium
+                            </span>
+                            <span class="text-2xl group-hover:scale-125 transition-transform">🍸</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-earth-900 mb-2">Showcases Gastronómicos + Ocio</h3>
+                        <p class="text-xs text-earth-600 leading-relaxed mb-4">
+                            Eventos de nicho dirigidos al público con alto ticket promedio y alto consumo de bebidas dentro del recinto.
+                        </p>
+                    </div>
+                    <ul class="text-xs text-earth-700 space-y-2 border-t border-earth-100 pt-4">
+                        <li class="flex justify-between"><span>Margen Promedio:</span> <strong class="text-earth-800">35% - 50%</strong></li>
+                        <li class="flex justify-between"><span>Ticket Promedio:</span> <strong class="text-earth-800">Alto</strong></li>
+                        <li class="flex justify-between"><span>Fidelización:</span> <strong class="text-earth-800">Alta</strong></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Simulador Interactivo de ROI -->
+            <div class="earth-card p-6 sm:p-8 rounded-3xl bg-white border border-earth-200 shadow-xl">
+                <div class="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-earth-100 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-terracotta-600 uppercase tracking-widest block">Herramienta Interactiva</span>
+                        <h3 class="text-xl font-bold text-earth-900">Simulador de Rentabilidad de Evento en Barranquilla</h3>
+                    </div>
+                    <span class="text-xs bg-terracotta-50 text-terracotta-700 font-semibold px-3 py-1.5 rounded-xl border border-terracotta-200 self-start sm:self-auto">
+                        🧮 Ajuste en Tiempo Real
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Controles / Sliders -->
+                    <div class="lg:col-span-6 space-y-5">
+                        
+                        <!-- Slider 1: Asistentes -->
+                        <div class="bg-earth-50 p-3.5 rounded-2xl border border-earth-200/60">
+                            <div class="flex justify-between text-xs sm:text-sm font-semibold text-earth-800 mb-1">
+                                <label for="input-capacity">Aforo Estimado (Personas):</label>
+                                <span id="val-capacity" class="text-terracotta-600 font-bold bg-white px-2 py-0.5 rounded border border-earth-200">2,500</span>
+                            </div>
+                            <input type="range" id="input-capacity" min="500" max="15000" step="250" value="2500" oninput="updateCalculator()" class="w-full accent-terracotta-500 bg-earth-200 h-2 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Slider 2: Ticket Promedio -->
+                        <div class="bg-earth-50 p-3.5 rounded-2xl border border-earth-200/60">
+                            <div class="flex justify-between text-xs sm:text-sm font-semibold text-earth-800 mb-1">
+                                <label for="input-ticket">Boleta Promedio (COP):</label>
+                                <span id="val-ticket" class="text-terracotta-600 font-bold bg-white px-2 py-0.5 rounded border border-earth-200">$ 120,000</span>
+                            </div>
+                            <input type="range" id="input-ticket" min="30000" max="400000" step="5000" value="120000" oninput="updateCalculator()" class="w-full accent-terracotta-500 bg-earth-200 h-2 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Slider 3: Presupuesto Producción -->
+                        <div class="bg-earth-50 p-3.5 rounded-2xl border border-earth-200/60">
+                            <div class="flex justify-between text-xs sm:text-sm font-semibold text-earth-800 mb-1">
+                                <label for="input-cost">Costo de Producción/Artistas (COP):</label>
+                                <span id="val-cost" class="text-earth-900 font-bold bg-white px-2 py-0.5 rounded border border-earth-200">$ 180,000,000</span>
+                            </div>
+                            <input type="range" id="input-cost" min="30000000" max="800000000" step="10000000" value="180000000" oninput="updateCalculator()" class="w-full accent-earth-700 bg-earth-200 h-2 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Patrocinios Estimados -->
+                        <div class="bg-earth-50 p-3.5 rounded-2xl border border-earth-200/60">
+                            <div class="flex justify-between text-xs sm:text-sm font-semibold text-earth-800 mb-1">
+                                <label for="input-sponsor">Ingreso por Patrocinios / B2B (COP):</label>
+                                <span id="val-sponsor" class="text-ochre-600 font-bold bg-white px-2 py-0.5 rounded border border-earth-200">$ 50,000,000</span>
+                            </div>
+                            <input type="range" id="input-sponsor" min="0" max="300000000" step="5000000" value="50000000" oninput="updateCalculator()" class="w-full accent-ochre-500 bg-earth-200 h-2 rounded-lg cursor-pointer">
+                        </div>
+
+                    </div>
+
+                    <!-- Output Cuadro de Resultados -->
+                    <div class="lg:col-span-6 bg-earth-950 text-white p-6 sm:p-8 rounded-3xl border border-earth-800 shadow-2xl space-y-5">
+                        <div class="text-center space-y-1">
+                            <span class="text-xs font-bold text-ochre-400 uppercase tracking-widest block">Proyección Financiera Estimada</span>
+                            <h4 class="text-lg font-bold text-white">Retorno de Inversión (ROI)</h4>
+                            <div id="res-roi" class="text-5xl font-extrabold text-ochre-400 my-2 transition-all">94.4%</div>
+                            <p class="text-[11px] text-earth-300 max-w-xs mx-auto">
+                                Estimación optimizada considerando preventas Early Bird (75% venta anticipada).
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 text-center pt-2">
+                            <div class="bg-earth-900/90 p-4 rounded-2xl border border-earth-800">
+                                <span class="text-[10px] text-earth-400 font-bold uppercase block">Ingreso Total Bruto</span>
+                                <span id="res-gross" class="text-base sm:text-lg font-extrabold text-white">$ 350,000,000</span>
+                            </div>
+                            <div class="bg-earth-900/90 p-4 rounded-2xl border border-earth-800">
+                                <span class="text-[10px] text-earth-400 font-bold uppercase block">Utilidad Neta Est.</span>
+                                <span id="res-profit" class="text-base sm:text-lg font-extrabold text-emerald-400">$ 170,000,000</span>
+                            </div>
+                        </div>
+
+                        <div class="p-3 rounded-xl bg-earth-900/50 border border-white/5 text-[11px] text-earth-300 text-center">
+                            💡 Tip para la Junta: Un ROI superior al 35% en la plaza de Barranquilla valida la apertura inmediata de boletería.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- INTERFAZ 3: CONTACTO DIRECTO Y CANALES OFICIALES -->
+        <section id="interface-contacto" class="tab-content hidden space-y-8 animate-fadeInUp">
+            
+            <div class="border-b border-earth-200 pb-5">
+                <span class="text-xs font-bold text-terracotta-600 uppercase tracking-widest">Atención y Gestión</span>
+                <h2 class="text-2xl sm:text-3xl font-serif-title font-bold text-earth-900">
+                    Contactos Directos y Canales Oficiales
+                </h2>
+                <p class="text-earth-600 text-sm mt-1">
+                    Canales de comunicación inmediata para la coordinación del proyecto, asesoría comercial y enlaces institucionales de la ciudad.
+                </p>
+            </div>
+
+            <!-- Sección de Contacto e Interacción Institucional -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Contacto WhatsApp Directo -->
+                <div class="earth-card p-8 rounded-3xl bg-gradient-to-br from-earth-900 via-earth-950 to-black text-white flex flex-col justify-between shadow-xl relative overflow-hidden group">
+                    <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl group-hover:scale-150 transition-transform"></div>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-2xl mb-4 border border-emerald-500/30">
+                            💬
+                        </div>
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest block mb-1">Contacto Directo</span>
+                        <h3 class="text-2xl font-serif-title font-bold mb-2">Asesoría / Consultoría de Proyecto</h3>
+                        <p class="text-xs text-earth-300 leading-relaxed mb-6">
+                            Comunícate directamente por WhatsApp para coordinar los detalles de la estructuración de la propuesta comercial, dudas o acompañamiento.
+                        </p>
+                    </div>
+
+                    <a href="https://wa.me/573013050929" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-3 w-full py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all shadow-lg hover:shadow-emerald-900/50 transform hover:-translate-y-0.5">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.572-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                        <span>WhatsApp: 301 305 0929</span>
+                    </a>
+                </div>
+
+                <!-- Enlace Institucional Alcaldía de Barranquilla -->
+                <div class="earth-card p-8 rounded-3xl flex flex-col justify-between border border-earth-200">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-terracotta-100 text-terracotta-700 flex items-center justify-center font-bold text-2xl mb-4">
+                            🏛️
+                        </div>
+                        <span class="text-xs font-bold text-terracotta-600 uppercase tracking-widest block mb-1">Enlace Oficial</span>
+                        <h3 class="text-2xl font-serif-title font-bold text-earth-900 mb-2">Alcaldía de Barranquilla</h3>
+                        <p class="text-xs text-earth-600 leading-relaxed mb-6">
+                            Acceso directo al portal institucional de la ciudad para verificación de permisos de eventos, normativa de espacio público y desarrollo cultural.
+                        </p>
+                    </div>
+
+                    <a href="https://www.barranquilla.gov.co/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 w-full py-4 px-6 rounded-2xl bg-earth-900 hover:bg-earth-800 text-white font-bold text-sm transition-all shadow-md transform hover:-translate-y-0.5">
+                        <span>Portal Oficial Barranquilla.gov.co</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer Corporativo -->
+    <footer class="bg-earth-950 text-earth-300 py-8 border-t border-earth-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center sm:text-left sm:flex sm:items-center sm:justify-between text-xs space-y-3 sm:space-y-0">
+            <p>© 2025 Estrategia & Análisis de Entretenimiento Barranquilla. Reservado para presentación directiva.</p>
+            <div class="flex justify-center space-x-6 text-earth-400 font-medium">
+                <span>Comité Nacional</span>
+                <span>•</span>
+                <span>Barranquilla, Colombia</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-earth-900 text-white text-xs px-5 py-3.5 rounded-2xl shadow-2xl border border-earth-700 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50 flex items-center space-x-2">
+        <span>✅</span>
+        <span id="toast-message">Texto copiado al portapapeles</span>
+    </div>
+
+    <script>
+        
+        // Lógica de Tabs e Interacción
+        function switchTab(tabId) {
+            // Ocultar todas las interfaces
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            
+            // Remover estado activo de botones
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                btn.classList.remove('bg-earth-900', 'text-white', 'shadow-md');
+                btn.classList.add('text-earth-700');
+            });
+
+            // Mostrar la interfaz seleccionada
+            const targetInterface = document.getElementById(`interface-${tabId}`);
+            if (targetInterface) {
+                targetInterface.classList.remove('hidden');
+            }
+
+            // Activar botón seleccionado
+            const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-earth-900', 'text-white', 'shadow-md');
+                activeBtn.classList.remove('text-earth-700');
+            }
+
+            // Sincronizar select móvil
+            const mobileSelect = document.querySelector('select');
+            if(mobileSelect) mobileSelect.value = tabId;
+
+            // Redibujar gráfico si es necesario
+            if (tabId === 'informe' && window.execChart) {
+                setTimeout(() => window.execChart.resize(), 100);
+            }
+        }
+
+        // Animación de contadores numéricos
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter-value');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 30;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.innerText = (target % 1 === 0 ? target : target.toFixed(1));
+                        clearInterval(timer);
+                    } else {
+                        counter.innerText = (current % 1 === 0 ? Math.floor(current) : current.toFixed(1));
+                    }
+                }, 30);
+            });
+        }
+
+        // Gráficos Chart.js con Paleta Tono Tierra
+        window.addEventListener('DOMContentLoaded', () => {
+            const ctx = document.getElementById('chartExecutive').getContext('2d');
+            
+            window.execChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Crecimiento PIB %', 
+                        'Venta Regional %', 
+                        'Confianza Consumidor', 
+                        'Compra Anticipada %', 
+                        'Eventos Sold Out %'
+                    ],
+                    datasets: [{
+                        label: 'Indicadores Clave 2025',
+                        data: [9.9, 35, 42, 75, 50],
+                        backgroundColor: [
+                            '#C85A32', // Terracotta
+                            '#D98E1D', // Ochre
+                            '#876343', // Earth Warm
+                            '#4D3625', // Earth Dark
+                            '#B84922'  // Deep Terracotta
+                        ],
+                        borderRadius: 10,
+                        borderSkipped: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1A120C',
+                            titleFont: { family: 'Plus Jakarta Sans', size: 12, weight: 'bold' },
+                            bodyFont: { family: 'Plus Jakarta Sans', size: 12 },
+                            padding: 12,
+                            cornerRadius: 10,
+                            callbacks: {
+                                label: function(context) {
+                                    return ` Valor: ${context.raw}` + (context.dataIndex === 2 ? ' pts' : '%');
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Plus Jakarta Sans', size: 10, weight: '600' }, color: '#6E4E35' }
+                        },
+                        y: {
+                            grid: { color: '#E7DBCB' },
+                            ticks: { font: { family: 'Plus Jakarta Sans', size: 10 }, color: '#6E4E35' }
+                        }
+                    }
+                }
+            });
+
+            // Inicializar simulador y contadores
+            updateCalculator();
+            animateCounters();
+        });
+
+        // Lógica de Simulador Financiero ROI
+        function updateCalculator() {
+            const capacity = parseInt(document.getElementById('input-capacity').value);
+            const ticket = parseInt(document.getElementById('input-ticket').value);
+            const cost = parseInt(document.getElementById('input-cost').value);
+            const sponsor = parseInt(document.getElementById('input-sponsor').value);
+
+            // Actualizar etiquetas visuales
+            document.getElementById('val-capacity').innerText = capacity.toLocaleString('es-CO');
+            document.getElementById('val-ticket').innerText = '$ ' + ticket.toLocaleString('es-CO');
+            document.getElementById('val-cost').innerText = '$ ' + cost.toLocaleString('es-CO');
+            document.getElementById('val-sponsor').innerText = '$ ' + sponsor.toLocaleString('es-CO');
+
+            // Cálculos
+            const ticketRevenue = capacity * ticket;
+            const grossRevenue = ticketRevenue + sponsor;
+            const netProfit = grossRevenue - cost;
+            const roi = cost > 0 ? ((netProfit / cost) * 100).toFixed(1) : 0;
+
+            // Renderizado
+            document.getElementById('res-gross').innerText = '$ ' + grossRevenue.toLocaleString('es-CO');
+            
+            const profitEl = document.getElementById('res-profit');
+            profitEl.innerText = '$ ' + netProfit.toLocaleString('es-CO');
+            if(netProfit < 0) {
+                profitEl.className = 'text-base sm:text-lg font-extrabold text-red-400';
+            } else {
+                profitEl.className = 'text-base sm:text-lg font-extrabold text-emerald-400';
+            }
+
+            document.getElementById('res-roi').innerText = roi + '%';
+        }
+
+        // Copiar texto de guion
+        function copyPitchText() {
+            const textToCopy = `Señores del comité, el mito de que en Barranquilla la gente consume poco entretenimiento ha quedado totalmente desmentido por los datos oficiales de 2025.\n\nA nivel nacional, el sector creció un 9.9%, liderando la economía, y la disposición al gasto en ocio en Barranquilla aumentó en 42 puntos. El público barranquillero tiene el capital y el deseo de consumir; lo que ocurre es que ahora es más sofisticado y planificador: el 75% compra sus boletas con más de un mes de anticipación y el 50% de los eventos estructurados logran Sold Out absoluto.\n\nSi activamos campañas agresivas de preventa en formatos de alta rentabilidad como la comedia en vivo y conciertos de un solo día en escenarios como el Gran Malecón o Puerta de Oro, capturaremos una cuota de mercado con retornos excepcionales. Es el momento estratégico para invertir en la plaza de Barranquilla.`;
+
+            // Copiar mediante execCommand para alta compatibilidad iframe
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            // Mostrar Toast
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
